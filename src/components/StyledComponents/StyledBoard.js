@@ -34,7 +34,7 @@ padding: 20px 0;
 display: flex;
 flex-direction: column;
 align-items: center;
-input{
+input.search-box{
   width: 350px;
   height: 35px;
   border: 1px solid #ccc;

@@ -1,19 +1,31 @@
 import React, { useEffect, useState } from 'react';
-import { Wrap, MainContainer, PostContainer, TopInner, PostList, BoardInfo, Posts } from './StyledComponents/StyledBoard';
-
 import axios from 'axios';
 
+// style
+import { Wrap, MainContainer, PostContainer, TopInner, PostList, BoardInfo, Posts } from './StyledComponents/StyledBoard';
 
 
 
 const Board = () => {
+
+  const [postData, setPostData] = useState([]);
+  const dataUrl = "http://54.180.116.156:3300/v1/board/read?page=1&pageRows=10"
+
+  useEffect(() => {
+    axios.get(dataUrl).then((response) => {
+      console.log(response.data)
+      setPostData(response.data.boardList);
+    }).catch(() => {});
+  }, [])
+
+
 
   return (
     <Wrap>
       <MainContainer>
         <PostContainer>
           <TopInner>
-            <input type='text'></input>
+            <input type='text' className='search-box'></input>
             <p className='line'></p>
             <nav>
               <ul>
@@ -36,15 +48,22 @@ const Board = () => {
 
             <Posts>
               {/* dddddddddd */}
-              <li>
-                <div className='left'>
-                  <p>게시판제목</p>
-                </div>
-                <div className='right'>
-                  <p>날짜들어갈곳</p>
-                </div>
-              </li>
-
+              {postData.map((post, i) => {
+                return (
+                  <>
+                  <li>
+                    <div className='left'>
+                      <p>
+                        {post.content}
+                      </p>
+                    </div>
+                    <div className='right'>
+                      <p>날짜들어갈곳</p>
+                    </div>
+                  </li>
+                  </>
+                );
+              })}
             </Posts>
           </PostList>
         </PostContainer>
