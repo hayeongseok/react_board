@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from "react-router-dom";
 import axios from 'axios';
 
 // style
 import { Wrap, MainContainer, PostContainer, TopInner, PostList, BoardInfo, Posts } from './StyledComponents/StyledBoard';
-
 
 
 const Board = () => {
@@ -13,9 +13,11 @@ const Board = () => {
 
   useEffect(() => {
     axios.get(dataUrl).then((response) => {
-      console.log(response.data)
+      // console.log(response.data.boardList)
       setPostData(response.data.boardList);
-    }).catch(() => {});
+    }).catch(() => {
+      console.log("error");
+    });
   }, [])
 
 
@@ -25,7 +27,7 @@ const Board = () => {
       <MainContainer>
         <PostContainer>
           <TopInner>
-            <input type='text' className='search-box'></input>
+            <input type='text' placeholder='검색' className='search'></input>
             <p className='line'></p>
             <nav>
               <ul>
@@ -48,22 +50,24 @@ const Board = () => {
 
             <Posts>
               {/* dddddddddd */}
-              {postData.map((post, i) => {
+              {postData ? postData.map((post, i) => {
                 return (
-                  <>
                   <li>
                     <div className='left'>
-                      <p>
-                        {post.content}
+                      <p key={post.boardId}>
+                        <Link to={`Post/${post.boardId}`}>
+                          {post.title}
+                        </Link>
                       </p>
                     </div>
                     <div className='right'>
-                      <p>날짜들어갈곳</p>
+                      <p>
+                        {post.regDt.split("T")[0].replaceAll("-",".")}
+                      </p>
                     </div>
                   </li>
-                  </>
-                );
-              })}
+                ) 
+              }) : ""}
             </Posts>
           </PostList>
         </PostContainer>
