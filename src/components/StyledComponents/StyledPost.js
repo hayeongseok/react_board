@@ -61,8 +61,17 @@ export const PostContent = styled.article`
   height: 100%;
   margin-top: 50px;
   background: ivory;
-
   p.title{
-    font-size: 30px;
+    font-size: 36px;
+    margin-bottom: 8px;
   }
+  div.postInfo {
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+  }
+  span.name, span.date{
+    color: #ccc;
+  }
+  span.name {margin-right: 10px;}
 `

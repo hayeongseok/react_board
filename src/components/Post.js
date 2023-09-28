@@ -42,13 +42,18 @@ const Post = () => {
             <PostContent>
               {postData.map((post, i) => {
                 return (
-                  <div>
-                    <p className='title'>{"제목"}</p>
-                    <p>
-                      <span className='name'>{post.name}</span>
-                      <span className='date'>{post.regDt}</span>
-                    </p>
-                  </div>
+                  <>
+                    <div className='postInfo'>
+                      <p className='title'>{post.title}</p>
+                      <p>
+                        <span className='name'>{post.name}</span>
+                        <span className='date'>{post.regDt.split("T")[0]} {post.regDt.split("T")[1].slice(0,8)}</span>
+                      </p>
+                    </div>
+                    <div className='content'>
+                      <p>{post.content}</p>
+                    </div>
+                  </>
                 );
               })}
               
