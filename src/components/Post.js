@@ -9,17 +9,17 @@ import { Wrap, MainContainer, PostContainer, TopInner, PostContent } from './Sty
 const Post = () => {
   const { boardId } = useParams();
   const [postData, setPostData] = useState([]);
-  // const dataUrl = "http://54.180.116.156:3300/v1/board/read?page=1&pageRows=10"
-  const postUrl = `http://54.180.116.156:3300/v1/board/read/${ boardId }`
+  const dataUrl = `http://54.180.116.156:3300/v1/board/read/${ boardId }`
 
-  useEffect(() => {
-    axios.get(postUrl).then((response) => {
-      console.log("asd", response.data.result)
+  // useEffect(() => {
+    axios.get(dataUrl).then((response) => {
+      // console.log(response.data.result)
       setPostData(response.data.result);
     }).catch(() => {});
-  }, [])
+  // }, [])
+  //then->성공핸들링 / catch->에러핸들링
 
-  console.log(postData,postUrl,boardId)
+  console.log(postData,dataUrl,boardId)
 
   return(
     <Wrap>

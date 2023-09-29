@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import './fonts/pretendard.css'
 
 export const Wrap = styled.div`
   width: calc(100vw - (100vw - 100%));
@@ -7,7 +8,7 @@ export const Wrap = styled.div`
   padding: 0;
   margin: 0 auto;
 
-  * {padding: 0; margin: 0; color: #222; box-sizing: border-box;}
+  * {padding: 0; margin: 0; color: #222; box-sizing: border-box; font-family: 'Pretendard-Regular';}
   li {list-style: none;}
   a {text-decoration: none;}
 `
@@ -59,9 +60,7 @@ export const TopInner = styled.div`
 `
 
 export const PostList = styled.div`
-  height: 100%;
   background: #ffd89f;
-
 `
 
 export const BoardInfo = styled.div`
@@ -71,6 +70,11 @@ export const BoardInfo = styled.div`
   border-bottom: 1px solid #ddd;
   padding-bottom: 30px;
   margin-top: 50px;
+  h3{
+    font-size: 26px; 
+    font-family: 'Pretendard-Semiblod';
+  }
+  span.total{font-size: 14px; color: #ccc;}
   button {
     height: 40px;
     background: #3FA9F5;
@@ -78,6 +82,8 @@ export const BoardInfo = styled.div`
     padding: 0 25px;
     color: #fff;
     border-radius: 100px;
+    font-size: 16px;
+    font-family: 'Pretendard-Semiblod';
   }
 `
 
@@ -86,7 +92,7 @@ export const Posts = styled.ul`
   li{
     display: flex;
     justify-content: space-between;
-    border: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
     padding: 20px 0;
   }
 `

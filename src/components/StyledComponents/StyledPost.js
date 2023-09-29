@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import './fonts/pretendard.css'
 
 export const Wrap = styled.div`
   width: calc(100vw - (100vw - 100%));
@@ -7,7 +8,7 @@ export const Wrap = styled.div`
   padding: 0;
   margin: 0 auto;
 
-  * {padding: 0; margin: 0; color: #222; box-sizing: border-box;}
+  * {padding: 0; margin: 0; color: #222; box-sizing: border-box; font-family: 'Pretendard-Regular';}
   li {list-style: none;}
   a {text-decoration: none;}
 `
@@ -58,9 +59,9 @@ ul li {
 `
 
 export const PostContent = styled.article`
-  height: 100%;
   margin-top: 50px;
   background: ivory;
+  padding-bottom: 100px;
   p.title{
     font-size: 36px;
     margin-bottom: 8px;
