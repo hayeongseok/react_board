@@ -11,6 +11,7 @@ export const Wrap = styled.div`
   * {padding: 0; margin: 0; color: #222; box-sizing: border-box; font-family: 'Pretendard-Regular';}
   li {list-style: none;}
   a {text-decoration: none;}
+  button{cursor: pointer;}
 `
 export const MainContainer = styled.main`
 width: 1380px;

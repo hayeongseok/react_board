@@ -11,14 +11,14 @@ const Board = () => {
   const [postData, setPostData] = useState([]);
   const dataUrl = "http://54.180.116.156:3300/v1/board/read?page=1&pageRows=10"
 
-  // useEffect(() => {
+  useEffect(() => {
     axios.get(dataUrl).then((response) => {
-      console.log(response.data.boardList.length)
+      console.log(response.data.boardList)
       setPostData(response.data.boardList);
     }).catch(() => {
       console.log("error");
     });
-  // }, [])
+  }, [])
 
 
 
@@ -45,16 +45,18 @@ const Board = () => {
                 <h3>게시판 <span className='total'>({postData.length}개의 글)</span></h3>
                 <p>게시판입니당</p>
               </div>
-              <button>글쓰기</button>
+              <Link to={`/PostWrite`}>
+                <button>글쓰기</button>
+              </Link>
             </BoardInfo>
 
             <Posts>
               {/* dddddddddd */}
               {postData ? postData.map((post, i) => {
                 return (
-                  <li>
+                  <li key={post.boardId}>
                     <div className='left'>
-                      <p key={post.boardId}>
+                      <p>
                         <Link to={`Post/${post.boardId}`}>
                           {post.title}
                         </Link>

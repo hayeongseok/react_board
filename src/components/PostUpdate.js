@@ -1,14 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useNavigate  } from "react-router-dom";
+import { Link, useNavigate, useParams  } from "react-router-dom";
 import axios from 'axios';
 
 import { Wrap, MainContainer, PostContainer, WriteBox, buttonBox } from './StyledComponents/StyledPostWrite';
 
 const PostWrite = () => {
-
   const navigate = useNavigate();
-  const createURL = "http://54.180.116.156:3300/v1/board/create"
-
+  const { boardId } = useParams();
   const [ post, setPost ] = useState({
     title: "",
     content: "",
@@ -17,16 +15,6 @@ const PostWrite = () => {
 
   const { title, content, name } = post;
 
-  const savePost = async () => {
-    await axios.post(createURL, post).then((response)=> {
-      console.log(response);
-      alert("등록test");
-      navigate("/");
-    }).catch((error)=> {
-        console.log(error)
-    })
-  }
-
   const onChange = (e) => {
     const { value, name } = e.target;
     setPost({
@@ -34,12 +22,33 @@ const PostWrite = () => {
       [name]: value,
     });
   };
+  
+  //데이터 가져오기
+  useEffect(() => {
+    axios.get(`http://54.180.116.156:3300/v1/board/read/${ boardId }`).then((response) => {
+      // console.log("get",response.data.result)
+      setPost(response.data.result[0]);
+    }).catch(() => {});
+  }, [])
+
+  //수정버튼 클릭
+  const updatePost = async () => {
+    await axios.patch(`http://54.180.116.156:3300/v1/board/update`, post).then((response)=> {
+      // console.log("patch",response);
+      alert("수정test");
+      navigate("/");
+    }).catch((error)=> {
+        console.log(error)
+    })
+  }
+
+  console.log("post", post)
 
   return (
     <Wrap>
       <MainContainer>
         <PostContainer>
-          <h3>글쓰기</h3>
+          <h3>수정하기</h3>
           <WriteBox>
             <p>이름</p>
             <input 
@@ -67,7 +76,7 @@ const PostWrite = () => {
             ></textarea>
             <div className='button-cont'>
               <button onClick={() => {navigate("/")}} className='calcel'>취소</button>
-              <button onClick={savePost} className='submit'>등록</button>
+              <button onClick={updatePost} className='submit'>등록</button>
             </div>
           </WriteBox>
         </PostContainer>

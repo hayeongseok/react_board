@@ -84,6 +84,7 @@ export const BoardInfo = styled.div`
     border-radius: 100px;
     font-size: 16px;
     font-family: 'Pretendard-Semiblod';
+    cursor: pointer;
   }
 `
 
