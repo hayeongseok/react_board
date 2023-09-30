@@ -13,17 +13,28 @@ const Post = () => {
   const navigate = useNavigate();
   useEffect(() => {
     axios.get(dataUrl).then((response) => {
-      console.log("ㅁㄴㅇㅁㄴㅇ",response.data.result)
+      // console.log("ㅁㄴㅇㅁㄴㅇ",response.data.result)
       setPostData(response.data.result);
     }).catch(() => {});
   }, [])
   //then->성공핸들링 / catch->에러핸들링
   
+  const postDelete = async () => {
+    if(window.confirm("삭제test")) {
+      await axios.delete(`http://54.180.116.156:3300/v1/board/delete`, {
+      }).then((res) => {
+        alert("삭제되었습니다.");
+        navigate("/");
+      }).catch((error)=> {
+        console.log(error)
+      })
+    }
+  }
 
 
 
 
-  console.log(postData,dataUrl,boardId)
+  // console.log(postData,dataUrl,boardId)
 
   return(
     <Wrap>
@@ -62,6 +73,7 @@ const Post = () => {
                       <button>목록</button>
                     </Link>
                     <button onClick={() => {navigate( `/PostUpdate/${post.boardId}`)}}>수정</button>
+                    <button onClick={postDelete}>삭제</button>
                   </>
                 );
               })}

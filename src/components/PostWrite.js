@@ -5,10 +5,8 @@ import axios from 'axios';
 import { Wrap, MainContainer, PostContainer, WriteBox, buttonBox } from './StyledComponents/StyledPostWrite';
 
 const PostWrite = () => {
-
   const navigate = useNavigate();
   const createURL = "http://54.180.116.156:3300/v1/board/create"
-
   const [ post, setPost ] = useState({
     title: "",
     content: "",
@@ -19,7 +17,7 @@ const PostWrite = () => {
 
   const savePost = async () => {
     await axios.post(createURL, post).then((response)=> {
-      console.log(response);
+      // console.log(response);
       alert("등록test");
       navigate("/");
     }).catch((error)=> {

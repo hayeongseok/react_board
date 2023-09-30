@@ -13,7 +13,7 @@ const Board = () => {
 
   useEffect(() => {
     axios.get(dataUrl).then((response) => {
-      console.log(response.data.boardList)
+      // console.log(response.data.boardList)
       setPostData(response.data.boardList);
     }).catch(() => {
       console.log("error");
@@ -54,20 +54,20 @@ const Board = () => {
               {/* dddddddddd */}
               {postData ? postData.map((post, i) => {
                 return (
-                  <li key={post.boardId}>
-                    <div className='left'>
-                      <p>
-                        <Link to={`Post/${post.boardId}`}>
-                          {post.title}
-                        </Link>
-                      </p>
-                    </div>
-                    <div className='right'>
-                      <p>
-                        {post.regDt.split("T")[0].replaceAll("-",".")}
-                      </p>
-                    </div>
-                  </li>
+                  <Link to={`Post/${post.boardId}`}>
+                    <li key={post.boardId}>
+                      <div className='left'>
+                        <p>
+                            {post.title}
+                        </p>
+                      </div>
+                      <div className='right'>
+                        <p>
+                          {post.regDt.split("T")[0].replaceAll("-",".")}
+                        </p>
+                      </div>
+                    </li>
+                  </Link>
                 ) 
               }) : ""}
             </Posts>

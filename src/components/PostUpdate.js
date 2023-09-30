@@ -26,7 +26,6 @@ const PostWrite = () => {
   //데이터 가져오기
   useEffect(() => {
     axios.get(`http://54.180.116.156:3300/v1/board/read/${ boardId }`).then((response) => {
-      // console.log("get",response.data.result)
       setPost(response.data.result[0]);
     }).catch(() => {});
   }, [])
@@ -34,15 +33,14 @@ const PostWrite = () => {
   //수정버튼 클릭
   const updatePost = async () => {
     await axios.patch(`http://54.180.116.156:3300/v1/board/update`, post).then((response)=> {
-      // console.log("patch",response);
       alert("수정test");
-      navigate("/");
+      navigate(`/post/${ boardId }`);
     }).catch((error)=> {
         console.log(error)
     })
   }
 
-  console.log("post", post)
+  // console.log("post", post)
 
   return (
     <Wrap>
