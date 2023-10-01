@@ -2,8 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-import { Wrap, MainContainer, PostContainer, TopInner, PostContent } from './StyledComponents/StyledPost';
-
+// style
+import { Wrap, MainContainer, PostContainer} from './StyledComponents/Common';
+import { TopInner, PostContent, ButtonBox } from './StyledComponents/StyledPost';
 
 
 const Post = () => {
@@ -69,11 +70,13 @@ const Post = () => {
                         <p>{post.content}</p>
                       </div>
                     </PostContent>
-                    <Link to={`/`}>
-                      <button>목록</button>
-                    </Link>
-                    <button onClick={() => {navigate( `/PostUpdate/${post.boardId}`)}}>수정</button>
-                    <button onClick={postDelete}>삭제</button>
+                    <ButtonBox>
+                      <Link to={`/`}>
+                        <button>목록</button>
+                      </Link>
+                      <button onClick={() => {navigate( `/PostUpdate/${post.boardId}`)}} className='update'>수정</button>
+                      <button onClick={postDelete} className='delete'>삭제</button>
+                    </ButtonBox>
                   </>
                 );
               })}

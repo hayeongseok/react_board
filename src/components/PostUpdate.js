@@ -2,7 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { Link, useNavigate, useParams  } from "react-router-dom";
 import axios from 'axios';
 
-import { Wrap, MainContainer, PostContainer, WriteBox, buttonBox } from './StyledComponents/StyledPostWrite';
+// style
+import { Wrap, MainContainer, PostContainer} from './StyledComponents/Common';
+import { WriteBox } from './StyledComponents/StyledPostWrite';
 
 const PostWrite = () => {
   const navigate = useNavigate();
@@ -46,7 +48,7 @@ const PostWrite = () => {
     <Wrap>
       <MainContainer>
         <PostContainer>
-          <h3>수정하기</h3>
+          <h3 className='tit'>수정하기</h3>
           <WriteBox>
             <p>이름</p>
             <input 

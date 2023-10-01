@@ -1,35 +1,10 @@
 import styled from 'styled-components';
 import './fonts/pretendard.css'
 
-export const Wrap = styled.div`
-  width: calc(100vw - (100vw - 100%));
-  height: 100vh;
-  background: pink;
-  padding: 0;
-  margin: 0 auto;
-
-  * {padding: 0; margin: 0; color: #222; box-sizing: border-box; font-family: 'Pretendard-Regular';}
-  li {list-style: none;}
-  a {text-decoration: none;}
-  button{cursor: pointer;}
-`
-export const MainContainer = styled.main`
-width: 1380px;
-height: 100%;
-background: skyblue;
-margin: 0 auto;
-`
-
-export const PostContainer = styled.section`
-width: 1020px;
-height: 100%;
-background: gray;
-margin: 0 auto;
-padding: 0 80px;
-`
+const blue = "#3FA9F5";
 
 export const TopInner = styled.div`
-background: palegreen;
+/* background: palegreen; */
 margin: 0 auto;
 padding: 20px 0;
 display: flex;
@@ -49,8 +24,8 @@ input.search{
   background: #ddd;
 }
 ul {
+  /* background: yellow; */
   display: flex;
-  background: yellow;
   margin: 0;
   padding: 0;
 }
@@ -60,9 +35,9 @@ ul li {
 `
 
 export const PostContent = styled.article`
+  /* background: ivory; */
   margin-top: 50px;
-  background: ivory;
-  padding-bottom: 100px;
+  padding-bottom: 200px;
   p.title{
     font-size: 36px;
     margin-bottom: 8px;
@@ -76,4 +51,12 @@ export const PostContent = styled.article`
     color: #ccc;
   }
   span.name {margin-right: 10px;}
+`
+
+export const ButtonBox = styled.div`
+  display: flex;
+  justify-content: end;
+  button { margin-left: 10px;}
+  button.update {background: ${ blue }; opacity: 0.8;  color: #fff;}
+  button.delete {background: #f35858;  color: #fff;}
 `
