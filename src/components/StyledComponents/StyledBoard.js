@@ -49,6 +49,12 @@ export const TopInner = styled.div`
 export const PostList = styled.div`
   /* background: #ffd89f; */
   button.current-page {color: ${ blue };}
+  button#num {
+    background: none; 
+    padding: 10px 10px; 
+    font-size: 16px; 
+    font-family: 'Pretendard-Regular';
+  }
 `
 export const BoardInfo = styled.div`
   /* background: #f59fff; */

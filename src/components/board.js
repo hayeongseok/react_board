@@ -104,46 +104,61 @@ const Board = () => {
               }) : ""}
             </Posts>
 
+
+
             {/* 페이지네이션 */}
             <button 
             onClick = {() => {
-              setPage(page - 10)
               setPageLimit(pageLimit - 10)
               setCount(count - 1)
+              setPage((10*(count-1))+1)
             }}
             disabled = {page === 1}
             >&lt;&lt;</button>
 
             <button 
-            onClick = {() => setPage(page - 1)} 
+            onClick = {() => {
+              setPage(page - 1)
+              if (page % 10 === 1) {
+                setPageLimit(pageLimit - 10)
+                setCount(count - 1)
+              }
+              }} 
             disabled = {page === 1}
             >prev</button>
 
             {Array(Math.ceil((pageLimitTotalCount/10))-(10*count)).fill().map((v,i) => {
               return(
                 <button 
-                onClick = {() => setPage((10*count)+i+1)} className={page === (10*count)+i+1 ? "current-page" : ""}
+                onClick = {() => setPage((10*count)+i+1)} 
+                className={page === (10*count)+i+1 ? "current-page" : ""}
+                id='num'
                 >{(10*count)+i+1}</button>
               )
             })}
 
             <button 
-            onClick = {() => setPage(page + 1)} 
+            onClick = {() => {
+              setPage(page + 1)
+              if (page % 10 === 0) {
+                setPageLimit(pageLimit + 10)
+                setCount(count + 1)
+              }
+            }}
             disabled = {totalCount - (page * 10) < 0}
             >next</button>
 
             <button 
             onClick = {() => { 
-              setPage(page + 10)
               setPageLimit(pageLimit + 10)
               setCount(count + 1)
+              setPage((10*(count+1))+1)
             }}
             disabled = {totalCount - (page * 10) < 0}
             >&gt;&gt;</button>
+            {/* 페이지네이션 끝 */}
 
           </PostList>
-          {/* <Pagination/> */}
-          {/* {test()} */}
         </PostContainer>
       </MainContainer>
     </Wrap>
