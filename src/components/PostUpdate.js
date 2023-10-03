@@ -42,7 +42,6 @@ const PostWrite = () => {
     })
   }
 
-  // console.log("post", post)
 
   return (
     <Wrap>

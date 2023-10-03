@@ -14,7 +14,6 @@ export const Wrap = styled.div`
   li {list-style: none;}
   a {text-decoration: none;}
 `
-
 export const TopInner = styled.div`
   /* background: palegreen; */
   margin: 0 auto;
@@ -45,16 +44,8 @@ export const TopInner = styled.div`
     margin: 0 10px;
   }
 `
-
 export const PostList = styled.div`
   /* background: #ffd89f; */
-  button.current-page {color: ${ blue };}
-  button#num {
-    background: none; 
-    padding: 10px 10px; 
-    font-size: 16px; 
-    font-family: 'Pretendard-Regular';
-  }
 `
 export const BoardInfo = styled.div`
   /* background: #f59fff; */
@@ -82,9 +73,8 @@ export const BoardInfo = styled.div`
     cursor: pointer;
   }
 `
-
 export const Posts = styled.ul`
-
+  margin-bottom: 20px;
   li{
     display: flex;
     justify-content: space-between;
@@ -92,4 +82,30 @@ export const Posts = styled.ul`
     padding: 20px 0;
   }
   p.date {color: #ccc;}
+`
+
+export const PageNation = styled.div`
+  /* background: #ffd89f; */
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  button {
+    background: none;
+    color: #555;
+    font-family: 'Pretendard-Regular';
+    font-size: 16px; 
+    padding: 10px 10px; 
+
+  }
+  button:disabled {color: #ccc; cursor: default;}
+  button.current-page {color: ${ blue };}
+  button#num {
+    background: none; 
+    padding: 10px 10px; 
+  }
+  div.box {
+    /* background: pink; */
+  }
+
 `

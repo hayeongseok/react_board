@@ -10,6 +10,7 @@ export const WriteBox = styled.div`
     border: 1px solid #ccc;
     border-radius: 5px;
     margin-bottom: 20px;
+    padding: 0 5px;
   }
   input.name-input {
     width: 250px;

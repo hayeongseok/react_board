@@ -6,7 +6,6 @@ import './fonts/pretendard.css'
 export const Wrap = styled.div`
   /* background: pink; */
   width: calc(100vw - (100vw - 100%));
-  height: 100vh;
   padding: 0;
   margin: 0 auto;
 
@@ -28,6 +27,7 @@ export const MainContainer = styled.main`
   width: 1380px;
   height: 100%;
   margin: 0 auto;
+  padding-bottom: 200px;
 `
 
 export const PostContainer = styled.section`
