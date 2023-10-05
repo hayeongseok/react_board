@@ -22,7 +22,11 @@ const Post = () => {
   const postDelete = async () => {
     if(window.confirm("삭제test")) {
       await axios.delete(`http://54.180.116.156:3300/v1/board/delete`, {
-      }).then((res) => {
+        data: {
+          boardId: boardId,
+          },
+       }).then((res) => {
+        console.log(boardId, "아이디111")
         alert("삭제되었습니다.");
         navigate("/");
       }).catch((error)=> {
@@ -30,6 +34,7 @@ const Post = () => {
       })
     }
   }
+  console.log(boardId, "아이디222")
 
   return(
     <Wrap>

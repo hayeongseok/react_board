@@ -10,9 +10,7 @@ const PostWrite = () => {
   const navigate = useNavigate();
   const { boardId } = useParams();
   const [ post, setPost ] = useState({
-    title: "",
-    content: "",
-    name: "",
+
   });
 
   const { title, content, name } = post;
@@ -24,6 +22,7 @@ const PostWrite = () => {
       [name]: value,
     });
   };
+  console.log(post,'수정')
   
   //데이터 가져오기
   useEffect(() => {

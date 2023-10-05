@@ -28,6 +28,7 @@ const Board = () => {
       setTotalCount(response.data.totalCount);
     }).catch(() => {
       console.log("error");
+      //console.error('게시물을 불러올 수 없습니다.')
     });
   }, [page]) // 첫 렌더링 & 페이지 바뀔 때마다 실행
 
@@ -121,21 +122,21 @@ const Board = () => {
               {Array(Math.ceil((pageLimitTotalCount/10))-(10*count)).fill().map((v,i) => {
                 return(
                   <button 
-                  onClick = {() => setPage((10*count)+i+1)} 
-                  className={page === (10*count)+i+1 ? "current-page" : ""}
-                  id='num'
-                  key={i}
+                    onClick = {() => setPage((10*count)+i+1)} 
+                    className={page === (10*count)+i+1 ? "current-page" : ""}
+                    id='num'
+                    key={i}
                   >{(10*count)+i+1}</button>
                 )
               })}
 
                 <button 
-                onClick = {() => {
-                  setPage(page + 1)
-                  if (page % 10 === 0) {
-                    setPageLimit(pageLimit + 10)
-                    setCount(count + 1)
-                  }
+                  onClick = {() => {
+                    setPage(page + 1)
+                    if (page % 10 === 0) {
+                      setPageLimit(pageLimit + 10)
+                      setCount(count + 1)
+                    }
                 }}
                 disabled = {totalCount - (page * 10) < 0}
                 >next</button>
